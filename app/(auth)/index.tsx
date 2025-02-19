@@ -29,7 +29,7 @@ export default function signUp() {
               onChangeText={onChange}
               editable={!formState.isSubmitting}
               placeholder='email' placeholderTextColor={'#db2777'}></TextInput>
-            {error && <Text>{error.message}</Text>}
+            {error && <Text className='text-orange-500'>{error.message}</Text>}
           </>
         } />
         <Controller name='password' control={control} render={({ fieldState: { error }, field: { value, onChange } }) =>
@@ -45,7 +45,7 @@ export default function signUp() {
         } />
         <TouchableOpacity className='p-2 rounded-lg border-pink-600 border-4 bg-pink-600' onPress={()=>{
           console.log(supabase);
-          
+
         }}>
           <Text className='text-center font-bold'>Sign Up</Text>
         </TouchableOpacity>
