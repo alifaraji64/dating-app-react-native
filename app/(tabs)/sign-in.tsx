@@ -1,15 +1,14 @@
-import { Image, StyleSheet, Platform, Text, SafeAreaView, View, TextInput, TouchableOpacity } from 'react-native';
-import { useForm, Controller } from 'react-hook-form'
-import * as zod from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
+
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import { supabase } from '@/lib/supabase';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, useForm } from 'react-hook-form';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
+import * as zod from 'zod'
 const AuthSchema = zod.object({
   email: zod.string().email({ message: 'email is required' }),
   password: zod.string().min(6, { message: 'password should be at least 6 characters' })
 })
-
-export default function signUp() {
+export default function signIn() {
   const { control, handleSubmit, formState } = useForm({
     resolver: zodResolver(AuthSchema),
     defaultValues: {
@@ -43,32 +42,17 @@ export default function signUp() {
             {error && <Text>{error.message}</Text>}
           </>
         } />
-        <TouchableOpacity className='p-2 rounded-lg border-pink-600 border-4 bg-pink-600' onPress={()=>{
-          console.log(supabase);
-          
-        }}>
-          <Text className='text-center font-bold'>Sign Up</Text>
+        <TouchableOpacity className='p-2 rounded-lg border-pink-600 border-4 bg-pink-600'>
+          <Text className='bg-pink-600 text-center font-bold'>Sign In</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
+
   );
 }
-
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+  text: {
+    fontSize: 30,
+    color: 'white'
+  }
 });

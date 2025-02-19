@@ -1,10 +1,8 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
+import Feather from '@expo/vector-icons/Feather';
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -16,8 +14,6 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
             // Use a transparent background on iOS to show the blur effect
@@ -27,17 +23,23 @@ export default function TabLayout() {
         }),
       }}>
       <Tabs.Screen
-        name="index"
+        name="sign-in"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: 'sign in',
+          tabBarIcon: ({ color, focused }) => <Feather name="user-check" size={24} color={focused ? 'black' : '#db2777'} />,
+          tabBarActiveBackgroundColor: '#db2777',
+          tabBarActiveTintColor: 'black',
+          tabBarInactiveTintColor: '#db2777'
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="index"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'sign up',
+          tabBarIcon: ({ color, focused }) => <Feather name="user-check" size={24} color={focused ? 'black' : '#db2777'} />,
+          tabBarActiveTintColor: 'black',
+          tabBarActiveBackgroundColor: '#db2777',
+          tabBarInactiveTintColor: '#db2777'
         }}
       />
     </Tabs>
