@@ -2,11 +2,11 @@ import { countries } from "countries-list";
 import { Item } from "react-native-picker-select";
 
 export const genderSelectItems: Item[] = [{ label: 'male', value: 'male' }
-    , { label: 'female', value: 'female' }
-    , { label: 'bisexual', value: 'bisexual' }
-    , { label: 'gay', value: 'gay' }
-    , { label: 'lesbian', value: 'lesbian' }
-    , { label: 'other', value: 'not specified' }
+    , { label: 'female', value: 'female', key: 'female' }
+    , { label: 'bisexual', value: 'bisexual', key: 'bisexual' }
+    , { label: 'gay', value: 'gay', key: 'gay' }
+    , { label: 'lesbian', value: 'lesbian', key: 'lesbian' }
+    , { label: 'other', value: 'not specified', key: 'other' }
 ]
 export const interestedInSelectItems: Item[] = [{ label: 'male', value: 'male' }
     , { label: 'female', value: 'female' }
