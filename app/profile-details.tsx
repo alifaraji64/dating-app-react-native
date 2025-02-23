@@ -62,7 +62,7 @@ const ProfileDetails = () => {
         }
     };
     return (
-        <SafeAreaView className='flex-1 bg-blue-950'>
+        <SafeAreaView className='flex-1 bg-blue-900'>
             <Text className='text-4xl text-white text-center bg-pink-700 pt-12'>Profile Details</Text>
             <ScrollView>
                 <View className='w-[350px] mx-auto flex-1 justify-center gap-6 p-4 bg-blue'>
