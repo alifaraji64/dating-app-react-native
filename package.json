@@ -11,7 +11,7 @@
     "test": "jest --watchAll",
     "lint": "expo lint",
     "build:tailwind": "tailwindcss --input input.css --output tailwind.css --no-autoprefixer && tailwind-rn",
-    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\""
+    "dev:tailwind": "concurrently \"tailwindcss --input global.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\""
   },
   "jest": {
     "preset": "jest-expo"
@@ -45,6 +45,7 @@
     "react-native": "0.76.7",
     "react-native-dotenv": "^3.4.11",
     "react-native-gesture-handler": "~2.20.2",
+    "react-native-modal": "^13.0.1",
     "react-native-paper": "^5.13.1",
     "react-native-picker-select": "^9.3.1",
     "react-native-reanimated": "3.16.2",
@@ -52,6 +53,7 @@
     "react-native-screens": "~4.4.0",
     "react-native-shadow-2": "^7.1.1",
     "react-native-svg": "^15.11.1",
+    "react-native-swiper-flatlist": "^3.2.5",
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
     "tailwind-rn": "^4.2.0",
