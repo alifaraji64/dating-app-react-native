@@ -6,9 +6,9 @@ import AntDesign from '@expo/vector-icons/AntDesign'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
-export default function Details() {
-  return (
-    <View id='DETAILS' className='flex-1 flex-wrap flex-row gap-8 justify-evenly max-w-full  p-2'>
+export default function Details(props: { me: boolean }) {
+    return (
+        <View id='DETAILS' className='flex-1 flex-wrap flex-row gap-8 justify-evenly max-w-full  p-2'>
             <View>
                 <Shadow distance={10} startColor="#db2777" style={{ borderRadius: 10 }}>
                     <View className='w-28  h-32 border-2 border-pink-600 text-center p-1'>
@@ -17,10 +17,11 @@ export default function Details() {
                         <Text className='text-pink-600 text-center font-bold'>Los angles, california</Text>
                     </View>
                 </Shadow>
-                <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
+                {props.me ? <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
                     <AntDesign name="edit" size={24} color="white" className=' w-8' />
                     <Text className='text-white'>Edit</Text>
-                </Pressable>
+                </Pressable> : null}
+
             </View>
             <View>
                 <Shadow distance={10} startColor="#db2777" style={{ borderRadius: 10 }}>
@@ -30,10 +31,11 @@ export default function Details() {
                         <Text className='text-pink-600 text-center font-bold'>Female</Text>
                     </View>
                 </Shadow>
-                <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
+                {props.me ? <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
                     <AntDesign name="edit" size={24} color="white" className=' w-8' />
                     <Text className='text-white'>Edit</Text>
-                </Pressable>
+                </Pressable> : null}
+
             </View>
             <View>
                 <Shadow distance={10} startColor="#db2777" style={{ borderRadius: 10 }}>
@@ -43,10 +45,11 @@ export default function Details() {
                         <Text className='text-pink-600 text-center font-bold'>Female</Text>
                     </View>
                 </Shadow>
-                <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
+                {props.me ? <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
                     <AntDesign name="edit" size={24} color="white" className=' w-8' />
                     <Text className='text-white'>Edit</Text>
-                </Pressable>
+                </Pressable> : null}
+
             </View>
             <View>
                 <Shadow distance={10} startColor="#db2777" style={{ borderRadius: 10 }}>
@@ -56,10 +59,11 @@ export default function Details() {
                         <Text className='text-pink-600 text-center font-bold'>2001</Text>
                     </View>
                 </Shadow>
-                <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
+                {props.me ? <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
                     <AntDesign name="edit" size={24} color="white" className=' w-8' />
                     <Text className='text-white'>Edit</Text>
-                </Pressable>
+                </Pressable> : null}
+
             </View>
             <View>
                 <Shadow distance={10} startColor="#db2777" style={{ borderRadius: 10 }}>
@@ -69,10 +73,11 @@ export default function Details() {
                         <Text className='text-pink-600 text-center font-bold'>long-term</Text>
                     </View>
                 </Shadow>
-                <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
+                {props.me ? <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
                     <AntDesign name="edit" size={24} color="white" className=' w-8' />
                     <Text className='text-white'>Edit</Text>
-                </Pressable>
+                </Pressable> : null}
+
             </View>
             <View>
                 <Shadow distance={10} startColor="#db2777" style={{ borderRadius: 10 }}>
@@ -82,11 +87,12 @@ export default function Details() {
                         <Text className='text-pink-600 text-center font-bold'>18-78</Text>
                     </View>
                 </Shadow>
-                <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
+                {props.me ? <Pressable onPress={() => { }} className='flex  flex-row justify-center items-center mt-2'>
                     <AntDesign name="edit" size={24} color="white" className=' w-8' />
                     <Text className='text-white'>Edit</Text>
-                </Pressable>
+                </Pressable> : null}
+
             </View>
         </View>
-  )
+    )
 }

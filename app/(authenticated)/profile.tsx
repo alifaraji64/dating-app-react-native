@@ -10,6 +10,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
 import Name from '@/components/profile/name';
 import Bio from '@/components/profile/bio';
+import { router } from 'expo-router';
 
 export default function Profile() {
     const [isVisible, setIsVisible] = useState(false);
@@ -21,7 +22,7 @@ export default function Profile() {
         <SafeAreaView className='flex-1 bg-blue-900'>
 
             <Appbar.Header className='bg-blue-900' style={{ backgroundColor: '#1e3a8a', borderBottomColor: '#172554', borderBottomWidth: 1 }}>
-                <Appbar.BackAction color='white' onPress={() => { }} />
+                <Appbar.BackAction color='white' onPress={() => {router.back()}} />
                 <Appbar.Content color='white' title="Dratiee" />
                 <Appbar.Action icon={''} />
             </Appbar.Header>
@@ -30,7 +31,7 @@ export default function Profile() {
                     <Hero />
                     <Name />
                     <Bio />
-                    <Details />
+                    <Details me/>
                 </View>
             </ScrollView>
         </SafeAreaView >

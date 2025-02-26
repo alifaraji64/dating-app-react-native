@@ -1,11 +1,10 @@
 import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
-import ProfileDetails from './profile-details'
-import Profile from './profile'
+import SignIn from './(auth)/sign-in'
+import { Redirect } from 'expo-router'
 const Index = () => {
     return (
-        // <ProfileDetails></ProfileDetails>
-        <Profile></Profile>
+        <Redirect href={'/(auth)/sign-in'}/>
     )
 }
 

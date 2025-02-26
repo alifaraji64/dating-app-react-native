@@ -4,7 +4,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { Shadow } from 'react-native-shadow-2';
 import { SwiperFlatList } from 'react-native-swiper-flatlist';
 import EvilIcons from '@expo/vector-icons/EvilIcons';
-const images = [
+export const images = [
   { id: 1, url: 'https://imgs.search.brave.com/jFhYNrlOIMIep1M67Eg6E1OmkKmMvzB6XfqOW3Qc4Mw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzY5LzJj/L2RiLzY5MmNkYjli/NWFhMmY5YjA5NDMw/NDhlN2QwNGZjMzAx/LmpwZw' },
   { id: 2, url: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.8hNgyjKStajqrBg-YcYUAwHaJQ%26pid%3DApi&f=1&ipt=c1a75a50c52123d61239fb44e0387b99c581f02e5b50f705d611b68250a93f5c&ipo=images' },
   { id: 3, url: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.9YOTTNwl0a1K67suyHnP6gHaJM%26pid%3DApi&f=1&ipt=a4cc2fe1201580e5086e3518d30daef5f10b49eba6b17cfe869cbaafc4859509&ipo=images' },

@@ -4,12 +4,14 @@ import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { supabase } from '@/lib/supabase';
+import { Redirect,useRouter } from 'expo-router';
 const AuthSchema = zod.object({
   email: zod.string().email({ message: 'email is required' }),
   password: zod.string().min(6, { message: 'password should be at least 6 characters' })
 })
 
 export default function signUp() {
+  const router = useRouter()
   const { control, handleSubmit, formState } = useForm({
     resolver: zodResolver(AuthSchema),
     defaultValues: {
@@ -18,7 +20,7 @@ export default function signUp() {
     }
   })
   return (
-    <SafeAreaView className='flex-1'>
+    <SafeAreaView className='flex-1 bg-blue-900'>
       <View className='w-4/5 mx-auto flex-1 justify-center gap-6'>
         <FontAwesome6 name="hand-holding-heart" size={140} color="#db2777" className='mb-20 text-center' />
         <Controller name='email' control={control} render={({ fieldState: { error }, field: { value, onChange } }) =>
@@ -44,7 +46,7 @@ export default function signUp() {
           </>
         } />
         <TouchableOpacity className='p-2 rounded-lg border-pink-600 border-4 bg-pink-600' onPress={()=>{
-          console.log(supabase);
+          router.push('/profile')
 
         }}>
           <Text className='text-center font-bold'>Sign Up</Text>
