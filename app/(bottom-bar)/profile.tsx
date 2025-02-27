@@ -20,10 +20,9 @@ export default function Profile() {
 
 
         <SafeAreaView className='flex-1 bg-blue-900'>
-
             <Appbar.Header className='bg-blue-900' style={{ backgroundColor: '#1e3a8a', borderBottomColor: '#172554', borderBottomWidth: 1 }}>
                 <Appbar.BackAction color='white' onPress={() => {router.back()}} />
-                <Appbar.Content color='white' title="Dratiee" />
+                <Appbar.Content color='white' title="datiee" />
                 <Appbar.Action icon={''} />
             </Appbar.Header>
             <ScrollView>

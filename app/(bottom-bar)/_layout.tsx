@@ -12,11 +12,9 @@ import React from 'react';
 import { Text } from 'react-native';
 import Profile from './profile';
 import FindMatches from './find-matches';
-const MusicRoute = () => <Text>Music</Text>;
-
-const AlbumsRoute = () => <Text>Albums</Text>;
-
-const RecentsRoute = () => <Text>Recents</Text>;
+import Messages from './chats';
+import Chats from './chats';
+import SingleChat from '../single-chat';
 
 const NotificationsRoute = () => <Text>Notifications</Text>;
 
@@ -27,16 +25,17 @@ export default function AuthenticatedLayout() {
   const [index, setIndex] = React.useState(0);
   const [isAuthenticated, setAuthenticated] = React.useState(false);
   const [routes] = React.useState([
-    { key: 'profile',title:'Profile', focusedIcon: 'face-man-profile', unfocusedIcon: 'heart-outline' },
+    { key: 'profile', title: 'Profile', focusedIcon: 'face-man-profile', unfocusedIcon: 'heart-outline' },
     { key: 'find-matches', title: 'Find Matches', focusedIcon: 'find-replace' },
-    { key: 'recents', title: 'Messages', focusedIcon: 'chat-outline' },
+    { key: 'chats', title: 'Messages', focusedIcon: 'chat-outline' },
     { key: 'notifications', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
+    //{ key: 'single-chat', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
   ]);
   const renderScene = BottomNavigation.SceneMap({
     profile: Profile,
     'find-matches': FindMatches,
-    recents: RecentsRoute,
-    notifications: NotificationsRoute,
+    chats: Chats,
+    notifications: NotificationsRoute
   });
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
@@ -54,14 +53,13 @@ export default function AuthenticatedLayout() {
   }
 
   return (
-
     <ThemeProvider value={DarkTheme}>
       <BottomNavigation
         barStyle={{ backgroundColor: '#db2777', padding: 0, margin: 0 }}
         navigationState={{ index, routes }}
         onIndexChange={setIndex}
         renderScene={renderScene}
-        activeColor='#1e3a8a'inactiveColor='#1e3a8a'
+        activeColor='#1e3a8a' inactiveColor='#1e3a8a'
       />
       <StatusBar style="auto" />
     </ThemeProvider>
