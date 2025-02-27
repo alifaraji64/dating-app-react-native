@@ -5,8 +5,8 @@ import { router } from 'expo-router'
 
 export default function Chats() {
     const messages = [
-        { url: 'https://picsum.photos/700', name: 'valeria faraji', lastMessage: 'I think it is really interesting', timestamp: '22:36' },
-        { url: 'https://picsum.photos/700', name: 'Ali Masoomi', lastMessage: 'I think it is really interesting', timestamp: '02:36' },
+        { url: 'https://picsum.photos/700', name: 'valeria Igorevna', lastMessage: 'I think it is really interesting', timestamp: '22:36' },
+        { url: 'https://picsum.photos/700', name: 'Ali Faraji', lastMessage: 'I think it is really interesting', timestamp: '02:36' },
         { url: 'https://picsum.photos/700', name: 'Amirreza Alishah', lastMessage: 'I think it is really interesting', timestamp: '22:36' },
         { url: 'https://picsum.photos/700', name: 'Omid Mosoxani', lastMessage: 'I think it is really interesting', timestamp: '20:36' },
         { url: 'https://picsum.photos/700', name: 'Ahad Choopani', lastMessage: 'I think it is really interesting', timestamp: '14:00' },

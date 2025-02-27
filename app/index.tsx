@@ -4,7 +4,7 @@ import SignIn from './(auth)/sign-in'
 import { Redirect } from 'expo-router'
 const Index = () => {
     return (
-        <Redirect href={'/(bottom-bar)/chats'}/>
+        <Redirect href={'/(auth)/sign-in'}/>
     )
 }
 

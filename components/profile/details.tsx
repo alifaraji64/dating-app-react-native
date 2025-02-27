@@ -10,8 +10,8 @@ export default function Details(props: { me: boolean }) {
     return (
         <View id='DETAILS' className='flex-1 flex-wrap flex-row gap-8 justify-evenly max-w-full  p-2'>
             <View>
-                <Shadow distance={10} startColor="#db2777" style={{ borderRadius: 10 }}>
-                    <View className='w-28  h-32 border-2 border-pink-600 text-center p-1'>
+                <Shadow distance={10} startColor="#ec4899" style={{ borderRadius: 100 }}>
+                    <View className='w-28  h-32 border-2 border-pink-600 text-center p-1 rounded-full'>
                         <Entypo name="location" size={30} color="white" className='mx-auto text-center' />
                         <Text className='text-white text-center'>Location</Text>
                         <Text className='text-pink-600 text-center font-bold'>Los angles, california</Text>
