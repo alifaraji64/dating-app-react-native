@@ -29,8 +29,8 @@ export default function Chats() {
                             <TouchableOpacity key={index} className='h-24 !p-0 !m-0'
                                 onLongPress={() => { setIsDeleteDialogVisible(true) }}
                                 onPress={() => router.push('/single-chat?id=testid1234')}>
-                                <View className='flex-1 flex-row gap-1 border-b-2 rounded-2xl border-blue-950 min-w-full px-4 py-3 items-center bg-blue-950' id='ITEM'>
-                                    <Image source={{ uri: m.url }} height={60} width={60} resizeMode='contain' className='rounded-full'></Image>
+                                <View className='flex-1 flex-row gap-2 border-b-2 rounded-2xl border-blue-950 min-w-full px-4 py-3 items-center bg-blue-950' id='ITEM'>
+                                    <Image source={{ uri: 'https://imgs.search.brave.com/jFhYNrlOIMIep1M67Eg6E1OmkKmMvzB6XfqOW3Qc4Mw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzY5LzJj/L2RiLzY5MmNkYjli/NWFhMmY5YjA5NDMw/NDhlN2QwNGZjMzAx/LmpwZw' }} height={60} width={60} resizeMode='contain' className='rounded-full'></Image>
                                     <View>
                                         <Text className='text-white text-lg font-semibold'>{m.name}</Text>
                                         <Text className='text-white text-sm'>{m.lastMessage}</Text>

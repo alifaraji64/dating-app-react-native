@@ -5,7 +5,6 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-import "../../global.css"
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { BottomNavigation } from 'react-native-paper';
 import React from 'react';
@@ -15,6 +14,7 @@ import FindMatches from './find-matches';
 import Messages from './chats';
 import Chats from './chats';
 import SingleChat from '../single-chat';
+import MatchRequests from './match-requests';
 
 const NotificationsRoute = () => <Text>Notifications</Text>;
 
@@ -28,18 +28,18 @@ export default function AuthenticatedLayout() {
     { key: 'profile', title: 'Profile', focusedIcon: 'face-man-profile', unfocusedIcon: 'heart-outline' },
     { key: 'find-matches', title: 'Find Matches', focusedIcon: 'find-replace' },
     { key: 'chats', title: 'Messages', focusedIcon: 'chat-outline' },
-    { key: 'notifications', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
+    { key: 'requests', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
     //{ key: 'single-chat', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
   ]);
   const renderScene = BottomNavigation.SceneMap({
     profile: Profile,
     'find-matches': FindMatches,
     chats: Chats,
-    notifications: NotificationsRoute
+    requests: MatchRequests
   });
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require('../../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require('../../../assets/fonts/SpaceMono-Regular.ttf'),
   });
 
   useEffect(() => {

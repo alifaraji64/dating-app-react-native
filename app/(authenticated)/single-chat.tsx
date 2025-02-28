@@ -7,25 +7,16 @@ export default function SingleChat() {
     const [text, setText] = useState("");
     const params: { id: string } = useLocalSearchParams();
     console.log(params);
+    const SubmitMessage = () => {
+        console.log('submit msg');
+    }
     const messages = [
-        { from: '1', to: '2', message: 'hi, how is it going?' },
-        { from: '2', to: '1', message: 'thanks it is not bad' },
-        { from: '2', to: '1', message: 'how about you?' },
-        { from: '1', to: '2', message: 'thanks it is all good, do you remeber the things i mentioned to you?' },
-        { from: '1', to: '2', message: 'about my school?' },
-        { from: '2', to: '1', message: 'ofcourse i do' },
-        { from: '1', to: '2', message: 'hi, how is it going?' },
-        { from: '2', to: '1', message: 'thanks it is not bad' },
-        { from: '2', to: '1', message: 'how about you?' },
-        { from: '1', to: '2', message: 'thanks it is all good, do you remeber the things i mentioned to you?' },
-        { from: '1', to: '2', message: 'about my school?' },
-        { from: '2', to: '1', message: 'ofcourse i do' },
-        { from: '1', to: '2', message: 'hi, how is it going?' },
-        { from: '2', to: '1', message: 'thanks it is not bad' },
-        { from: '2', to: '1', message: 'how about you?' },
-        { from: '1', to: '2', message: 'thanks it is all good, do you remeber the things i mentioned to you?' },
-        { from: '1', to: '2', message: 'about my school?' },
-        { from: '2', to: '1', message: 'ofcourse i do' },
+        { from: '1', to: '2', message: 'hi, how is it going?', timestamp: '12:36' },
+        { from: '2', to: '1', message: 'thanks it is not bad', timestamp: '12:36' },
+        { from: '2', to: '1', message: 'how about you?', timestamp: '12:36' },
+        { from: '1', to: '2', message: 'thanks it is all good, do you remeber the things i mentioned to you?', timestamp: '12:36' },
+        { from: '1', to: '2', message: 'about my school?', timestamp: '12:36' },
+        { from: '2', to: '1', message: 'ofcourse i do', timestamp: '12:36' },
     ]
 
     return (
@@ -39,11 +30,12 @@ export default function SingleChat() {
                 {/* ScrollView for messages */}
                 <ScrollView className=' px-4 pt-4'>
                     <View className='flex-1 gap-3 pb-16'>
-                       {messages.map((msg, index) => (
-                        <View key={index} className={`py-2 px-3 rounded-lg min-w-[70px] ${msg.from == '2' ? 'self-end bg-blue-300' : 'self-start bg-blue-500'}`}>
-                            <Text className={`text-left ${msg.from == '2' ? '' : 'text-white'}`}>{msg.message}</Text>
-                        </View>
-                    ))}
+                        {messages.map((msg, index) => (
+                            <View key={index} className={`pt-2 pb-5 relative px-3 rounded-lg min-w-[70px] ${msg.from == '2' ? 'self-end bg-blue-300' : 'self-start bg-blue-500'}`}>
+                                <Text className={`text-left ${msg.from == '2' ? '' : 'text-white'}`}>{msg.message}</Text>
+                                <Text className={`absolute bottom-0 right-1 font-semibold text-xs ${msg.from == '2' ? '' : 'text-white'}`}>{msg.timestamp}</Text>
+                            </View>
+                        ))}
                     </View>
 
                 </ScrollView>
@@ -62,7 +54,7 @@ export default function SingleChat() {
                         size={30}
                         background={'white'}
                         className='text-white bg-white'
-                        onPress={() => console.log('Pressed')}
+                        onPress={() => SubmitMessage()}
                     />
                 </View>
             </View>
