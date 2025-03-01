@@ -10,6 +10,8 @@ import { countries } from 'countries-list'
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { birthYearSelectItems, countrySelectItems, genderSelectItems, goalSelectItems, interestedInSelectItems } from '@/constants/selector-data'
 import { ProfileDetailsSchema } from '@/constants/zod-schemas'
+import { Appbar } from 'react-native-paper'
+import { router } from 'expo-router'
 
 
 
@@ -63,7 +65,11 @@ const ProfileDetails = () => {
     };
     return (
         <SafeAreaView className='flex-1 bg-blue-900'>
-            <Text className='text-4xl text-white text-center bg-pink-700 pt-12'>Profile Details</Text>
+            <Appbar.Header className='bg-blue-900' style={{ backgroundColor: '#1e3a8a', borderBottomColor: '#172554', borderBottomWidth: 1 }}>
+                {router.canGoBack() && <Appbar.BackAction color='white' onPress={() => { router.back() }} />}
+                <Appbar.Content color='white' title="profile details" />
+                <Appbar.Action icon={''} />
+            </Appbar.Header>
             <ScrollView>
                 <View className='w-[350px] mx-auto flex-1 justify-center gap-6 p-4 bg-blue'>
                     <Controller name='bio' render={({ fieldState: { error }, field: { value, onChange } }) =>

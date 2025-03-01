@@ -8,6 +8,7 @@ import { BottomNavigation } from 'react-native-paper';
 import SignIn from './sign-in';
 import signUp from './sign-up';
 import { BaseRoute } from 'react-native-paper/lib/typescript/components/BottomNavigation/BottomNavigation';
+import { StatusBar } from 'expo-status-bar';
 
 
 export default function AuthLayout() {
@@ -16,7 +17,7 @@ export default function AuthLayout() {
   const [routes] = React.useState<BaseRoute[]>([
     {
       key: 'sign-in',
-      title:'sign in',
+      title: 'sign in',
       focusedIcon: ({ color, size }) => (
         <Feather name="user-check" size={size} color={color} />
       ),
@@ -34,12 +35,16 @@ export default function AuthLayout() {
     'sign-up': signUp
   });
   return (
-    <BottomNavigation
-      barStyle={{ backgroundColor: '#db2777',height:70 }}
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-      activeColor='#1e3a8a'
-    />
+    <>
+      <BottomNavigation
+        barStyle={{ backgroundColor: '#db2777', height: 70 }}
+        navigationState={{ index, routes }}
+        onIndexChange={setIndex}
+        renderScene={renderScene}
+        activeColor='#1e3a8a'
+      />
+      <StatusBar style='dark' />
+    </>
+
   );
 }

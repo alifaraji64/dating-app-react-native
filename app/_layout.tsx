@@ -4,6 +4,9 @@ import { useEffect } from 'react';
 import React from 'react';
 import { Stack } from 'expo-router';
 import { DarkTheme, ThemeProvider } from '@react-navigation/native';
+import '../global.css'
+import { StatusBar } from 'expo-status-bar';
+import { AuthProvider } from '@/context/auth-context';
 export default function RootLayout() {
 
     const [loaded] = useFonts({
@@ -22,12 +25,15 @@ export default function RootLayout() {
 
     return (
         <ThemeProvider value={DarkTheme}>
-            <Stack
-                screenOptions={{
-                    headerShown: false, // Show header for all screens by default
-                    statusBarHidden: true
-                }}
-            />
+            <AuthProvider>
+                <Stack
+                    screenOptions={{
+                        headerShown: false, // Show header for all screens by default
+                        statusBarHidden: true
+                    }}
+                />
+                <StatusBar style='auto' />
+            </AuthProvider>
         </ThemeProvider>
 
     );

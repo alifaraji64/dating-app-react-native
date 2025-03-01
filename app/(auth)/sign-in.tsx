@@ -23,7 +23,7 @@ export default function SignIn() {
         <Controller name='email' control={control} render={({ fieldState: { error }, field: { value, onChange } }) =>
           <>
             <TextInput
-              className='border-4 rounded-lg border-pink-600 text-pink-600'
+              className='border-4 rounded-lg border-pink-600 text-pink-600 font-semibold'
               value={value}
               onChangeText={onChange}
               editable={!formState.isSubmitting}
@@ -34,7 +34,7 @@ export default function SignIn() {
         <Controller name='password' control={control} render={({ fieldState: { error }, field: { value, onChange } }) =>
           <>
             <TextInput
-              className='border-4 rounded-lg border-pink-600 text-pink-600'
+              className='border-4 rounded-lg border-pink-600 text-pink-600 font-semibold'
               value={value}
               onChangeText={onChange}
               editable={!formState.isSubmitting}
