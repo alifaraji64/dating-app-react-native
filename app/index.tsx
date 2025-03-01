@@ -9,16 +9,16 @@ import { checkDetailsExist } from '@/actions/profile-details'
 const Index = () => {
     const { user, loading } = useAuth();
     useEffect(() => {
-        checkDetailsExist().then(data=>{
-            if(!data)console.log('no data');
-            else{
-                console.log(data);
-                
+        (async () => {
+            try {
+                const userDetails = await checkDetailsExist({id:user?.id!});
+                console.log('User details:', userDetails); // This should print
+            } catch (error) {
+                console.error('Error fetching user details:', error);
             }
-            
-        })
+        })();
     }, [])
-    
+
     let userDetailsCompleted = false;
     if (loading) return <ActivityIndicator />
     if (!user) return <Redirect href={'/(auth)/sign-in'} />

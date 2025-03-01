@@ -22,6 +22,7 @@ export type Database = {
           id: number
           interested_gender: string
           pictures: string[]
+          user_id: string
         }
         Insert: {
           age_range: number[]
@@ -35,6 +36,7 @@ export type Database = {
           id?: number
           interested_gender: string
           pictures: string[]
+          user_id: string
         }
         Update: {
           age_range?: number[]
@@ -48,6 +50,7 @@ export type Database = {
           id?: number
           interested_gender?: string
           pictures?: string[]
+          user_id?: string
         }
         Relationships: []
       }
