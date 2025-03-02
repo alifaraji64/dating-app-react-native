@@ -10,7 +10,7 @@ export const images = [
   { id: 3, url: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.9YOTTNwl0a1K67suyHnP6gHaJM%26pid%3DApi&f=1&ipt=a4cc2fe1201580e5086e3518d30daef5f10b49eba6b17cfe869cbaafc4859509&ipo=images' },
 ]
 const colors = ['tomato', 'thistle', 'skyblue', 'teal'];
-export default function Hero() {
+export default function Hero({ imageUrl, me }: { imageUrl: string, me: boolean }) {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
@@ -61,7 +61,7 @@ export default function Hero() {
         </View>
         <Pressable className='top-12 relative' onPress={() => setIsVisible(true)}>
           <Shadow distance={10} startColor="rgba(0,0,0,0.3)" style={{ borderRadius: 100 }}>
-            <Image source={{ uri: 'https://imgs.search.brave.com/jFhYNrlOIMIep1M67Eg6E1OmkKmMvzB6XfqOW3Qc4Mw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzY5LzJj/L2RiLzY5MmNkYjli/NWFhMmY5YjA5NDMw/NDhlN2QwNGZjMzAx/LmpwZw' }} className='w-56 h-56 border-4 border-pink-700 rounded-full mx-auto'></Image>
+            <Image source={{ uri: imageUrl }} className='w-56 h-56 border-4 border-pink-700 rounded-full mx-auto'></Image>
           </Shadow>
         </Pressable>
         <View className='absolute top-10 right-2'>

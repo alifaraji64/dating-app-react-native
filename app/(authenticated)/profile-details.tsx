@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, TextInput, ScrollView, Platform, Button, Image, StyleSheet, Pressable } from 'react-native'
+import { View, Text, SafeAreaView, TextInput, ScrollView, Platform, Button, Image, StyleSheet, Pressable, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -10,8 +10,11 @@ import { countries } from 'countries-list'
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { birthYearSelectItems, countrySelectItems, genderSelectItems, goalSelectItems, interestedInSelectItems } from '@/constants/selector-data'
 import { ProfileDetailsSchema } from '@/constants/zod-schemas'
-import { Appbar } from 'react-native-paper'
+import { ActivityIndicator, Appbar, Snackbar } from 'react-native-paper'
 import { router } from 'expo-router'
+import { getProfileDetails, submitProfileDetails } from '@/actions/profile-details'
+import { useAuth } from '@/context/auth-context'
+import { User } from '@/lib/types'
 
 
 
@@ -21,6 +24,9 @@ import { router } from 'expo-router'
 const ProfileDetails = () => {
     const [range, setRange] = useState([18, 70]); // Initial range values
     const [image, setImage] = useState<string | null>(null)
+    const [isSnackbarVisible, setIsSnackbarVisible] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const { user } = useAuth()
     useEffect(() => {
         (async () => {
             if (Platform.OS !== 'web') {
@@ -42,12 +48,13 @@ const ProfileDetails = () => {
         defaultValues: {
             bio: '',
             image: '',
-            fullName: '',
+            full_name: '',
             gender: '',
-            interestedIn: '',
-            birthYear: 2000,
+            interested_gender: '',
+            birth_year: 2000,
             country: '',
             goal: '',
+            age_range: []
         }
     })
     const pickImage = async (onChange: any) => {
@@ -65,6 +72,14 @@ const ProfileDetails = () => {
     };
     return (
         <SafeAreaView className='flex-1 bg-blue-900'>
+            <Snackbar
+                style={{ position: 'absolute', backgroundColor: 'black' }}
+                visible={isSnackbarVisible}
+                onDismiss={() => { setIsSnackbarVisible(false); }}
+                duration={4000}
+            >
+                error occured during profile detais submission
+            </Snackbar>
             <Appbar.Header className='bg-blue-900' style={{ backgroundColor: '#1e3a8a', borderBottomColor: '#172554', borderBottomWidth: 1 }}>
                 {router.canGoBack() && <Appbar.BackAction color='white' onPress={() => { router.back() }} />}
                 <Appbar.Content color='white' title="profile details" />
@@ -96,7 +111,7 @@ const ProfileDetails = () => {
                             {error && <Text className='text-orange-500'>{error.message}</Text>}
                         </>
                     } />
-                    <Controller name='fullName' render={({ fieldState: { error }, field: { value, onChange } }) =>
+                    <Controller name='full_name' render={({ fieldState: { error }, field: { value, onChange } }) =>
                         <>
                             <Text className='text-pink-700 -mb-4'>Full Name</Text>
                             <TextInput
@@ -123,7 +138,7 @@ const ProfileDetails = () => {
                             {error && <Text className='text-orange-500'>{error.message}</Text>}
                         </>
                     } control={control} />
-                    <Controller name='interestedIn' render={({ fieldState: { error }, field: { value, onChange } }) =>
+                    <Controller name='interested_gender' render={({ fieldState: { error }, field: { value, onChange } }) =>
                         <>
                             <Text className='text-pink-700 -mb-4'>Insterested In</Text>
                             <RNPickerSelect items={interestedInSelectItems}
@@ -134,7 +149,7 @@ const ProfileDetails = () => {
                             {error && <Text className='text-orange-500'>{error.message}</Text>}
                         </>
                     } control={control} />
-                    <Controller name='birthYear' render={({ fieldState: { error }, field: { value, onChange } }) =>
+                    <Controller name='birth_year' render={({ fieldState: { error }, field: { value, onChange } }) =>
                         <>
                             <Text className='text-pink-700 -mb-4'>Birth Year</Text>
                             <RNPickerSelect items={birthYearSelectItems}
@@ -167,7 +182,7 @@ const ProfileDetails = () => {
                             {error && <Text className='text-orange-500'>{error.message}</Text>}
                         </>
                     } control={control} />
-                    <Controller control={control} name='preferredAgeRange' render={({ fieldState: { error }, field: { value, onChange } }) =>
+                    <Controller control={control} name='age_range' render={({ fieldState: { error }, field: { value, onChange } }) =>
                         <>
                             <Text className='text-pink-700 -mb-4'>Preferred Age Range</Text>
                             <MultiSlider
@@ -194,11 +209,23 @@ const ProfileDetails = () => {
                         console.log(data);
                     }
                     )}></Button> */}
-                    <Pressable className='border-2 border-pink-700 p-4 rounded-full' onPress={handleSubmit(data => {
-                        console.log(data);
+                    {isLoading ? <ActivityIndicator color='#be185d' size={40} className='p-2' /> : <TouchableOpacity className='border-2 border-pink-700 p-4 rounded-full' onPress={handleSubmit(async (data) => {
+                        try {
+                            setIsLoading(true)
+                            await submitProfileDetails({ details: data, uid: user?.id! })
+                            router.replace('/(authenticated)/(bottom-bar)/profile')
+                        } catch (error) {
+                            setIsSnackbarVisible(true)
+                        }
+                        finally {
+                            setIsLoading(false)
+                        }
+
                     })}>
+
                         <Text className='text-pink-700 text-xl font-bold text-center'>Submit Information</Text>
-                    </Pressable>
+                    </TouchableOpacity>}
+
                 </View>
             </ScrollView>
         </SafeAreaView >
