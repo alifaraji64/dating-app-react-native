@@ -59,7 +59,9 @@ export default function AuthenticatedLayout() {
         navigationState={{ index, routes }}
         onIndexChange={setIndex}
         renderScene={renderScene}
-        activeColor='#1e3a8a' inactiveColor='#1e3a8a'
+        activeColor='#1e3a8a' 
+        inactiveColor='#1e3a8a'
+        activeIndicatorStyle={{backgroundColor:'#f3f4f6'}}
       />
       <StatusBar style="auto" />
     </ThemeProvider>

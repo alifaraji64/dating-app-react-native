@@ -7,6 +7,7 @@ import { DarkTheme, ThemeProvider } from '@react-navigation/native';
 import '../global.css'
 import { StatusBar } from 'expo-status-bar';
 import { AuthProvider } from '@/context/auth-context';
+import { PaperProvider } from 'react-native-paper';
 export default function RootLayout() {
 
     const [loaded] = useFonts({
@@ -25,15 +26,18 @@ export default function RootLayout() {
 
     return (
         <ThemeProvider value={DarkTheme}>
-            <AuthProvider>
-                <Stack
-                    screenOptions={{
-                        headerShown: false, // Show header for all screens by default
-                        statusBarHidden: true
-                    }}
-                />
-                <StatusBar style='auto' />
-            </AuthProvider>
+            <PaperProvider>
+                <AuthProvider>
+                    <Stack
+                        screenOptions={{
+                            headerShown: false, // Show header for all screens by default
+                            statusBarHidden: true
+                        }}
+                    />
+                    <StatusBar style='auto' />
+                </AuthProvider>
+            </PaperProvider>
+
         </ThemeProvider>
 
     );

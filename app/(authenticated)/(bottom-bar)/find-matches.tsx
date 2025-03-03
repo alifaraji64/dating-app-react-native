@@ -46,7 +46,7 @@ export default function FindMatches() {
               </View>
             )}
           />
-          <Details me={false}></Details>
+          {/* <Details me={false}></Details> */}
         </View>
       </ScrollView>
       <FAB

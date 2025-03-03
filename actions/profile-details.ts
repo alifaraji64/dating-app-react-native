@@ -47,3 +47,15 @@ export const getProfileDetails = async ({ id }: { id: string }): Promise<User> =
     }
     return data;
 }
+export const updateDetail = async ({ id, fieldName, value }: { id: string, fieldName: keyof User, value: any }) => {
+    const { data, error } = await supabase
+        .from('user')
+        .update({[fieldName]:value})
+        .match({user_id:id})
+        console.log(data);
+        
+    if (error) {
+        console.log(error);
+        throw new Error('error getProfileDetails: ' + error)
+    }
+}
