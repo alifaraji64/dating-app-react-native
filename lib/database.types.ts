@@ -13,7 +13,7 @@ export type Database = {
         Row: {
           age_range: number[]
           bio: string
-          birth_year: string
+          birth_year: number
           country: string
           created_at: string
           full_name: string
@@ -27,7 +27,7 @@ export type Database = {
         Insert: {
           age_range: number[]
           bio: string
-          birth_year: string
+          birth_year: number
           country: string
           created_at?: string
           full_name: string
@@ -41,7 +41,7 @@ export type Database = {
         Update: {
           age_range?: number[]
           bio?: string
-          birth_year?: string
+          birth_year?: number
           country?: string
           created_at?: string
           full_name?: string

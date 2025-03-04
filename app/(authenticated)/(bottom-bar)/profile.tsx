@@ -8,13 +8,13 @@ import Bio from '@/components/profile/bio';
 import { router } from 'expo-router';
 import { getProfileDetails } from '@/actions/profile-details';
 import { useAuth } from '@/context/auth-context';
-import { User } from '@/lib/types';
+import { Profile as ProfileType } from '@/lib/types';
 import { supabase } from '@/lib/supabase';
 
 export default function Profile() {
     const [isVisible, setIsVisible] = useState(false);
-    const [details, setDetails] = useState<User | undefined>(undefined)
-    const { user } = useAuth()
+    const [details, setDetails] = useState<ProfileType | undefined>(undefined)
+    const { user,setProfile } = useAuth()
     const [isMe, setisMe] = useState<boolean>(false)
     useEffect(() => {
         const subscription = supabase
@@ -29,6 +29,7 @@ export default function Profile() {
                 (payload: any) => {
                     console.log('Realtime change received:', payload.new);
                     setDetails(payload.new)
+                    setProfile(payload.new)
 
                     // Handle the change
                 }
@@ -40,6 +41,7 @@ export default function Profile() {
             try {
                 let data = await getProfileDetails({ id: user?.id! })
                 setDetails(data)
+                setProfile(data)
                 setisMe(user?.id == data.user_id)
                 console.log('tttr');
 
@@ -62,7 +64,10 @@ export default function Profile() {
             <Appbar.Header className='bg-blue-900' style={{ backgroundColor: '#1e3a8a', borderBottomColor: '#172554', borderBottomWidth: 1 }}>
                 <Appbar.BackAction color='white' onPress={() => { router.back() }} />
                 <Appbar.Content color='white' title="datiee" />
-                <Appbar.Action icon={''} />
+                <Appbar.Action icon={'logout'} size={26} color='white' onPress={async()=>{
+                    await supabase.auth.signOut()
+                    router.replace('/(auth)/sign-in')
+                }} />
             </Appbar.Header>
             <ScrollView>
                 <View id='WRAPPER' className='min-w-[360px] mx-auto flex-1 justify-center gap-28 px-4 pb-8 bg-blue-900'>

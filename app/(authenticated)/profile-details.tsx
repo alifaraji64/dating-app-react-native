@@ -14,7 +14,7 @@ import { ActivityIndicator, Appbar, Snackbar } from 'react-native-paper'
 import { router } from 'expo-router'
 import { getProfileDetails, submitProfileDetails } from '@/actions/profile-details'
 import { useAuth } from '@/context/auth-context'
-import { User } from '@/lib/types'
+import { Profile } from '@/lib/types'
 
 
 

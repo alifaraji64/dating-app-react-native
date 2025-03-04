@@ -5,28 +5,27 @@ import Entypo from '@expo/vector-icons/Entypo'
 import AntDesign from '@expo/vector-icons/AntDesign'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
-import { User } from '@/lib/types'
+import { Profile } from '@/lib/types'
 import { Button, Modal, Portal } from 'react-native-paper'
 import RNPickerSelect, { Item } from 'react-native-picker-select';
 import { birthYearSelectItems, countrySelectItems, genderSelectItems, goalSelectItems, interestedInSelectItems } from '@/constants/selector-data'
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
-import { updateDetail } from '@/actions/profile-details'
 import { useAuth } from '@/context/auth-context'
 import { router } from 'expo-router'
 import EditModal from './edit-modal'
 
-export default function Details(props: { me: boolean, user?: User }) {
+export default function Details(props: { me: boolean, user?: Profile }) {
     const [visible, setVisible] = useState(false);
-    const [fieldName, setFieldName] = useState<keyof User | null>(null)
-    const [editText, setEditText] = useState<any>("");
+    const [fieldName, setFieldName] = useState<keyof Profile | undefined>(undefined)
+    const [editText, setEditText] = useState<any>(undefined);
     const { user } = useAuth()
-    const showModal = (field: keyof User) => {
+    const showModal = (field: keyof Profile) => {
         setFieldName(field)
         setEditText(props.user?.[field]!)
         setVisible(true)
     }
     const hideModal = () => {
-        setFieldName(null)
+        setFieldName(undefined)
         setEditText('')
         setVisible(false);
     }

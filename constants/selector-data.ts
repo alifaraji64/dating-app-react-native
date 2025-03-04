@@ -3,10 +3,7 @@ import { Item } from "react-native-picker-select";
 
 export const genderSelectItems: Item[] = [{ label: 'male', value: 'male' }
     , { label: 'female', value: 'female', key: 'female' }
-    , { label: 'bisexual', value: 'bisexual', key: 'bisexual' }
-    , { label: 'gay', value: 'gay', key: 'gay' }
-    , { label: 'lesbian', value: 'lesbian', key: 'lesbian' }
-    , { label: 'other', value: 'not specified', key: 'other' }
+    , { label: 'both', value: 'both', key: 'both' }
 ]
 export const interestedInSelectItems: Item[] = [{ label: 'male', value: 'male' }
     , { label: 'female', value: 'female' }

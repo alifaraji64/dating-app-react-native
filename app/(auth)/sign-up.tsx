@@ -47,12 +47,12 @@ export default function signUp() {
       >
         error occured during sign up
       </Snackbar>
-      <View className='w-4/5 mx-auto flex-1 justify-center gap-6'>
+      <View className='w-4/5 mx-auto flex-1 justify-center gap-6 max-w-[360px]'>
         <FontAwesome6 name="hand-holding-heart" size={140} color="#db2777" className='mb-20 text-center' />
         <Controller name='email' control={control} render={({ fieldState: { error }, field: { value, onChange } }) =>
           <>
             <TextInput
-              className='border-4 rounded-lg border-pink-600 text-pink-600 font-semibold'
+              className='border-4 rounded-lg border-pink-600 text-pink-600 font-semibold p-1'
               value={value}
               onChangeText={onChange}
               editable={!formState.isSubmitting}
@@ -63,7 +63,7 @@ export default function signUp() {
         <Controller name='password' control={control} render={({ fieldState: { error }, field: { value, onChange } }) =>
           <>
             <TextInput
-              className='border-4 rounded-lg border-pink-600 text-pink-600 font-semibold'
+              className='border-4 rounded-lg border-pink-600 text-pink-600 font-semibold p-1'
               value={value}
               onChangeText={onChange}
               editable={!formState.isSubmitting}
