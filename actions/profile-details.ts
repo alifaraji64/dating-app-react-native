@@ -2,11 +2,7 @@ import { supabase } from '@/lib/supabase'
 import { Database } from '../lib/database.types'
 import { useAuth } from '@/context/auth-context'
 import { User } from '@/lib/types'
-export const checkDetailsExist = async ({
-    id
-}: {
-    id: string
-}): Promise<any | Error> => {
+export const checkDetailsExist = async ({ id }: { id: string }): Promise<any | Error> => {
     console.log(id);
 
     const { data, error } = await supabase
@@ -50,10 +46,10 @@ export const getProfileDetails = async ({ id }: { id: string }): Promise<User> =
 export const updateDetail = async ({ id, fieldName, value }: { id: string, fieldName: keyof User, value: any }) => {
     const { data, error } = await supabase
         .from('user')
-        .update({[fieldName]:value})
-        .match({user_id:id})
-        console.log(data);
-        
+        .update({ [fieldName]: value })
+        .match({ user_id: id })
+    console.log(data);
+
     if (error) {
         console.log(error);
         throw new Error('error getProfileDetails: ' + error)

@@ -9,7 +9,7 @@ import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, TextInput } fro
 import { ActivityIndicator, Snackbar } from 'react-native-paper';
 import * as zod from 'zod'
 const AuthSchema = zod.object({
-  email: zod.string().email({ message: 'email is required' }),
+  email: zod.string().email({ message: 'email is not of a valid type' }),
   password: zod.string().min(6, { message: 'password should be at least 6 characters' })
 })
 export default function SignIn() {
